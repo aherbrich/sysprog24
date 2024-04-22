@@ -32,13 +32,13 @@
     - **Mac**
         - Installiert euch **XCode** ("*suite of software development tools developed by Apple for developing software"*)
         - Installiert euch **Homebrew** ("*The missing package manager for macOS*")
-        - anstelle des Debuggers **gdb** könnt ihr auf Max auch **lldb** verwenden
-        - anstelle von **valgrind** könnt ihr **leaks** verwenden
         - (Eine Menge wichtiger) Software kann nun über ```brew install package-xyz``` installiert werden.
+        - Anstelle des Debuggers **gdb** könnt ihr auf Mac auch **lldb** verwenden
+        - Anstelle von **valgrind** könnt ihr **leaks** verwenden
         - für mehr Tipps zur Einrichtung siehe [hier]( https://sourabhbajaj.com/mac-setup/).
     - **Linux**
         - Lucky you!
-        - (Quasi) jeglich Software wird über den Befehl ```sudo apt-get install package-xyz``` bzw. ```sudo apt install package-xyz``` installiert
+        - (Quasi) jegliche Software wird über den Befehl ```sudo apt-get install package-xyz``` bzw. ```sudo apt install package-xyz``` installiert
 
 - **Code-Editoren**
     - Euch überlassen!
@@ -47,7 +47,7 @@
 - **Terminal**
     - Learn how to use your shell!
     - Für Shell 101 siehe [hier](https://www.youtube.com/watch?v=IYZDIhfAUM0).
-    - Installiert euch shell packages für syntax-highlighting, auto-complete, history etc.
+    - Installiert euch shell packages für **syntax-highlighting, auto-complete, history** etc. (wie z.B [hier](https://sourabhbajaj.com/mac-setup/iTerm/zsh.html) für die Shell *zsh* beschrieben ist)
 
 
 ## C-Material
