@@ -11,7 +11,7 @@ int main() {
         int data3;
     };
 
-    printf("Size of struct MyData: %d\n", sizeof(struct MyData));
+    printf("Size of struct MyData: %lu\n", sizeof(struct MyData));
 
     // // (2)
     // // show that the size of a struct
@@ -25,7 +25,7 @@ int main() {
     //     char data3;
     // };
 
-    // printf("Size of struct MyData2: %d\n", sizeof(struct MyData2));
+    // printf("Size of struct MyData2: %lu\n", sizeof(struct MyData2));
 
     // // (3)
     // // show that restructuring the members of a struct
@@ -38,7 +38,7 @@ int main() {
     //     int data3;
     // };
 
-    // printf("Size of struct MyData3: %d\n", sizeof(struct MyData3));
+    // printf("Size of struct MyData3: %lu\n", sizeof(struct MyData3));
 
     // // (4)
     // // show that each member of a struct is aligned
@@ -53,7 +53,7 @@ int main() {
     //     int data4;
     // };
 
-    // printf("Size of struct MyData4: %d\n", sizeof(struct MyData4));
+    // printf("Size of struct MyData4: %lu\n", sizeof(struct MyData4));
 
 
     // // (5)
@@ -70,7 +70,7 @@ int main() {
     //     int data4;
     // };
 
-    // printf("Size of struct MyData5: %d\n", sizeof(struct MyData5));
+    // printf("Size of struct MyData5: %lu\n", sizeof(struct MyData5));
 
     // // (6)
     // // show how one can access single/multiple bits 
@@ -78,41 +78,65 @@ int main() {
 
     // struct MyData6
     // {
-    //     unsigned char data1 : 1;
-    //     unsigned char data2 : 1;
-    //     unsigned char data3 : 2;
-    //     unsigned char data4 : 4;
+    //     unsigned char bit_one : 1;
+    //     unsigned char bit_two : 1;
+    //     unsigned char bit_three_to_four : 2;
+    //     unsigned char bit_five_to_eight : 4;
     // };
 
     // struct MyData6 data;
 
-    // data.data1 = 0b1;
-    // data.data2 = 0b0;
-    // data.data3 = 0b00;
-    // data.data4 = 0b0110;
+    // data.bit_one = 0b1;
+    // data.bit_two = 0b0;
+    // data.bit_three_to_four = 0b00;
+    // data.bit_five_to_eight = 0b0110;
 
-    // printf("This should show an 'a'?: %c\n", data);
+    // printf("This should show an 'a'?: %c\n", data); // the compiler doesnt allow us to cast
+    //                                                 // the bitfield struct to a char
+    //                                                 // (which we would like too, 
+    //                                                 // in order to suppress the warning)
 
     // // (7)
-    // // show a neat trick with a union
+    // // show a neat trick with a union to access the bits
+    // // of a byte but keep a way to access the byte itself
     // union MyData7
     // {
     //     struct
     //     {
-    //         unsigned char data1 : 1;
-    //         unsigned char data2 : 1;
-    //         unsigned char data3 : 2;
-    //         unsigned char data4 : 4;
+    //         unsigned char bit_one : 1;
+    //         unsigned char bit_two : 1;
+    //         unsigned char bit_three_to_four : 2;
+    //         unsigned char bit_five_to_eight : 4;
     //     } bits;
     //     unsigned char raw;
     // };
 
     // union MyData7 data2;
 
-    // data2.bits.data1 = 0b1;
-    // data2.bits.data2 = 0b0;
-    // data2.bits.data3 = 0b00;
-    // data2.bits.data4 = 0b0110;
+    // data2.bits.bit_one = 0b1;
+    // data2.bits.bit_two = 0b0;
+    // data2.bits.bit_three_to_four = 0b00;
+    // data2.bits.bit_five_to_eight = 0b0110;
 
     // printf("This should show an 'a'?: %c\n", data2.raw);
+
+    // // (8)
+    // // show the union trick where one can look at the binary
+    // // representation of a float
+
+    // union MyData8
+    // {
+    //     float f;
+    //     unsigned int i;
+    // };
+
+    // union MyData8 data3;
+
+    // // you can check that this actually shows the binary representation
+    // // by using this (https://www.h-schmidt.net/FloatConverter/IEEE754.html)
+    // // online converter
+
+    // data3.f = 3.14;
+    // printf("This should show the binary representation (in hex) of 3.14: 0x%x\n", data3.i); // prints 0x4048f5c3
+
 }
