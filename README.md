@@ -2,8 +2,8 @@
 
 Tutorium | Thema | Tut-Slides | Code | Extra
 ------|----------|------------|------|------
-1 | Setup & C-Basics | [pptx](./tut01/tut01-setup-and-c.pptx) [pdf](./tut01/tut01-setup-and-c.pdf) | [code](./tut01/code/) | [notes](./tut01/README.md)
-2 | Prozesse und Threads | 
+1 | Setup & C-Basics | [pptx](./tut01/tut01-setup-and-c.pptx), [pdf](./tut01/tut01-setup-and-c.pdf) | [code](./tut01/code/) | [notes](./tut01/README.md)
+2 | Prozesse und Threads | [pptx](./tut02/tut02-prozesse.pptx), [pdf](./tut02/tut02-prozesse.pdf)
 3 | Scheduling | 
 4 | Prozesssynchronisation | 
 5 | Prozesssynchronisation | 
