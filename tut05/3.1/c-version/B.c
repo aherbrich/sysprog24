@@ -3,24 +3,28 @@
 
 // Task 3.1 b) (understanding SIGNAL & WAIT)
 //
-// compile with: gcc -o 1_B_pthread 1_B_pthread.c -lpthread
-// execute with: ./1_B_pthread
+// compile with: gcc -o 3_1_b ./tut05/3.1/c-version/B.c -lpthread
+// execute with: ./3_1_b 
 //
 // PROBLEM:
-// we have a doener stand with 2 employees (which work thread safe now -> see 1_A_pthread.c
-// now we also have customers that want to buy a doener
-// -> we have a global variable "nr_of_doener" (that should only be accessed by one thread,
-//                                              customer or employee, at a time)                                              
+// we have a doener stand with multiple employees (which work thread safe now -> see tut05/3.1/c-version/A.c)
+// now we also have multiple customers that want to buy a doener
+// -> we have a global variable "nr_of_doener" 
+//    (that should only be accessed by one thread, customer or employee, at a time)
+//
 
+
+// SOLUTION:
+
+// critical code
 int nr_of_doener = 0;
 void cut_meat() { /* simulate cutting meat */ }
 
-//SOLUTION:
-
+// mutexes
 pthread_mutex_t nr_of_doener_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t cut_meat_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-// ignore the syntax, this simply initializes a condition variable
+// cond/signal variables
 pthread_cond_t doener_ready = PTHREAD_COND_INITIALIZER;
 
 void employee_thread(){
@@ -50,10 +54,10 @@ void customer_thread(){
         // under the hood (a lot happens here):
         // 1. wait() unlocks the mutex for us
         // 2. wait() blocks the thread 
-        //      or even more accurate: the scheduler will put this thread to sleep
-        //      and remember that it is waiting for some cond to be met 
-        //      in our case, that "doener_ready" was signaled (which happens in employee_thread
-        //      after "nr_of_doener" was incremented)
+        //    (or even more accurate: the scheduler will put this thread to sleep
+        //    and remember that it is waiting for some cond to be met, in our case,
+        //    that "doener_ready" was signaled (which happens in employee_thread
+        //    after "nr_of_doener" was incremented))
         // 3. on exit of wait() the thread gets woken up
         // 4. on exit of wait(), the mutex gets locked again 
     }

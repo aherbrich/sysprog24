@@ -1,25 +1,31 @@
-// WARNING: this file will not compile
+// WARNING: this is pseudo code and will not compile
 
-// MUSTERLOESUNG:
-// this is based on the signal and wait logic from the lectures
-// in the lecture 
-//      -> a signal() simply sets a cond to true (no matter if it is already true)
-//      -> a wait() will block if the cond is false and
-//         wake up if the cond is true and set the cond back to false
-//      -> wait() ONLY blocks and has no other side effects (like unlocking a mutex)
+// Task 3.2 c) (SYNCHRONIZING buffer access)
+//
+// PROBLEM:
+// The sensor_thread and controller_thread are working on the same buffer.
+// The sensor_thread is gathering data into the buffer 
+// and the controller_thread is copying the data from the buffer.
+// -> only one thread should access the buffer at a time
 //
 
+// SOLUTION:
 
-char buffer[1024];
-state_t state = GATHERING;
+// critical code
+buffer[1024];
+state = GATHERING;
+gather_data_into_buffer() { /* simulate gathering data */ }
+copy_buffer() { /* simulate copying data */ }
 
-void gather_data_into_buffer() { /* simulate gathering data */ }
-void copy_buffer() { /* simulate copying data */ }
+// non-critical code
 void calculate_forecast() { /* simulate calculating forecast */ }
 
-mutex_t access_buffer_mutex;
-cond_t buffer_filled;
-cond_t buffer_copied;
+// mutexes
+access_buffer_mutex;
+
+// cond/signal variables
+buffer_filled;
+buffer_copied;
 
 
 void sensor_thread(){
@@ -60,6 +66,6 @@ void controller_thread(){
 
         unlock(access_buffer_mutex);
 
-        calculate_forecast();                  // this can happen outside of the critical section
+        calculate_forecast();                   // this can happen outside of lock (non-critical code)
     }
 }

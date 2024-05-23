@@ -3,9 +3,11 @@
 
 // Task 3.2 b) (understanding SPURIOUS WAKEUPS)
 //
-// compile with: gcc -o spurious_wakeup spurious_wakeup.c -lpthread
+// compile with: gcc -o spurious_wakeup tut05/3.2/c-version/spurious_wakeup.c -lpthread
 // execute with: ./spurious_wakeup
 //
+// Run the code and observe the output.
+
 
 
 int nr_of_doener = 0;
@@ -19,13 +21,14 @@ void employee_thread(){
     // pthread_cond_signal(&doener_ready);
 
     // contrary to what one might believe
-    // signal() wakes up ATLEAST one thread
+    // pthread_cond_signal() wakes up ATLEAST one thread
     // but can wake up more than one thread.
     // in that case only one thread will get the doener
     // and all other threads woke up for nothing
     // i.e. spurious wakeups
 
     // to trigger spurious wakeups (reliably) we use broadcast instead of signal
+    // broadcast wakes up ALL threads waiting on the condition variable
     pthread_cond_broadcast(&doener_ready);                  
                                    
     pthread_mutex_unlock(&nr_of_doener_mutex); 

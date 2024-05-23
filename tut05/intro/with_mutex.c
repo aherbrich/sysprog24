@@ -17,10 +17,14 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 void incremment_thread1() {
     for (int i = 0; i < 1000000; i++) {
         pthread_mutex_lock(&mutex);         // lock the mutex
-                                            // under the hood:
-                                            // if mutex is already locked by another thread
-                                            // -> this thread will wait until the mutex is unlocked (or even more accurate: the scheduler will put this thread to sleep, until the mutex is unlocked)
-                                            // -> then the thread will lock the mutex itself (or even more accurate: the scheduler will wake this thread up and let it lock the mutex)
+        // under the hood:
+        // if mutex is already locked by another thread
+        // -> this thread will wait until, the mutex is unlocked 
+        //    (or even more accurate: the scheduler will put this thread
+        //     to sleep, until the mutex is unlocked)
+        // -> then the thread will lock the mutex itself 
+        //    (or even more accurate: the scheduler will wake this thread
+        //     up and let it lock the mutex)
                                     
         // critical section start                  
         global_counter++;
@@ -33,11 +37,11 @@ void incremment_thread1() {
 // thread two (THREAD SAFE)
 void incremment_thread2() {
     for (int i = 0; i < 1000000; i++) {
-        pthread_mutex_lock(&mutex);         // lock the mutex
+        pthread_mutex_lock(&mutex);         // lock the mutex, same as above
         // critical section start
         global_counter++;
         // critical section end
-        pthread_mutex_unlock(&mutex);       // unlock the mutex
+        pthread_mutex_unlock(&mutex);       // unlock the mutex, same as above
     }
 }
 
