@@ -3,7 +3,7 @@
 
 // Version Nr. 2 (WITH MUTEX)
 //
-// compile with: gcc -o with_mutex with_mutex.c -lpthread
+// compile with: gcc -o with_mutex tut05/intro/with_mutex.c -lpthread
 // execute with: ./with_mutex
 //
 

@@ -3,7 +3,7 @@
 
 // Version Nr. 2 (WITH MUTEX, but better)
 //
-// compile with: gcc -o with_mutex_better with_mutex_better.c -lpthread
+// compile with: gcc -o with_mutex_better tut05/intro/with_mutex_better.c -lpthread
 // execute with: ./with_mutex_better
 //
 

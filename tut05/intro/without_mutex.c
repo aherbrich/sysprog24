@@ -3,7 +3,7 @@
 
 // Version Nr. 1 (NO MUTEX)
 //
-// compile with: gcc -o without_mutex without_mutex.c -lpthread
+// compile with: gcc -o without_mutex tut05/intro/without_mutex.c -lpthread
 // execute with: ./without_mutex
 //
 
