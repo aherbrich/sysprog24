@@ -7,7 +7,7 @@ Tutorium | Thema | Tut-Slides | Code | Extra
 3 | Scheduling | - | - | Tabellen [[xlsx](./tut03/scheduling.xlsx),[pdf](./tut03/scheduling.pdf)], Online-Scheduler [[link](https://distributedsystems.berlin/SysprogInteract/scheduling/scheduling.html)]
 4 | Scheduling | - | - | -
 5 | Prozesssynchronisation | - | - | -> [README](./tut05/README.md) <- 
-6 | Prozesssynchronisation | 
+6 | Prozesssynchronisation | - | [Ping-Pong](./tut06/3.4/) | - 
 7 | BM Verwaltung | 
 8 | BM Verwaltung | 
 9 | Speicherverwaltung | 
